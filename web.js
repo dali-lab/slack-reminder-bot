@@ -33,17 +33,22 @@ slack.on('open', function() {
   unreads = slack.getUnreadCount(),
   key;
 
-  var text = 'every 5 secs';
-  var s = later.parse.text(text);
+  /// SCHEDULING CODE
+  // set later to use local time
+  later.date.localTime();
+  // this is 8 PM on July 23rd
+  var s = later.parse.recur().every(1).second().on(20).hour().on(7).month().on(23).dayOfMonth().on(2015).year();
   var curChan = slack.getChannelGroupOrDMByName("#info");
-  var timer2 = later.setInterval(sendMessageToChannel.bind(null,curChan,"hi"), s);
+  var timer2 = later.setTimeout(sendMessageToChannel.bind(null,curChan,"hi"), s);
 
   var curChan = slack.getChannelGroupOrDMByName("nook_portfolio");
-  var timer3 = later.setInterval(sendMessageToChannel.bind(null,curChan,"hello there"), s);
+  var timer3 = later.setTimeout(sendMessageToChannel.bind(null,curChan,"hello there"), s);
 
  function sendMessageToChannel(curr,message) {
    curr.send(message);
+   console.log("TRIGGERED");
  }
+ /// SCHEDULING CODE
 
   for (key in slack.channels) {
 
