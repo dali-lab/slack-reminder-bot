@@ -16,6 +16,7 @@
     "agenda": "^0.6.28",
     "body-parser": "^1.6.3",
     "express": "^4.8.3",
+    "google-spreadsheet": "^1.0.1",
     "later": "^1.1.6",
     "logfmt": "^1.2.0",
     "node-env-file": "^0.1.7",
