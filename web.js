@@ -40,26 +40,20 @@ var lastUrgentMessageTime = 0.0;
 slack.on('open', function() {
 
   dailyCheck();
-  
-  }
 
-  // once a day, check for reminders to send
-  function dailyCheck(){
-    // set later to use local time
-    later.date.localTime();
-    // this is 8 PM on July 23rd
-    var elevenAM = later.parse.recur().every(1).dayOfMonth().on(11).hour();
-    var tenAM = later.parse.recur().every(1).dayOfMonth().on(10).hour();
-
-    var timer2 = later.setInterval(remindPresentingGroups, elevenAM);
-    var timer3 = later.setInterval(otherReminders, tenAM);
-  }
-
-  console.log('Welcome to Slack. You are @%s of %s', slack.self.name, slack.team.name);
-  console.log('You are in: %s', channels.join(', '));
-  console.log('As well as: %s', groups.join(', '));
-  console.log('You have %s unread ' + (unreads === 1 ? 'message' : 'messages'), unreads);
 });
+
+// once a day, check for reminders to send
+function dailyCheck(){
+  // set later to use local time
+  later.date.localTime();
+  // this is 8 PM on July 23rd
+  var elevenAM = later.parse.recur().every(1).dayOfMonth().on(11).hour();
+  var tenAM = later.parse.recur().every(1).dayOfMonth().on(10).hour();
+
+  var timer2 = later.setInterval(remindPresentingGroups, elevenAM);
+  var timer3 = later.setInterval(otherReminders, tenAM);
+}
 
 function consoleLog(){
   console.log("one");
