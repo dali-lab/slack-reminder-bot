@@ -78,7 +78,6 @@ function otherReminders(){
                 var channel = slack.getChannelGroupOrDMByName("#general");
                 channel.send("<!everyone> Hey DALI — this is a reminder about "+rows[i].reminder+" today! :cat:");
             }
-
           }
         });
       });
